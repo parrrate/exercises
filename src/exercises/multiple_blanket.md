@@ -1,3 +1,9 @@
+Make this compile.
+- `A1` doesn't know about/depend on `A2`
+- `A2` doesn't know about/depend on `A1`
+- `A1` doesn't know about/depend on `A`
+- `A2` doesn't know about/depend on `A`
+- can't edit definitions of `A`, `test`, `tes1`, `test2`; can only add code outside of those items
 ```rust
 trait A {
     fn a_ref(&self) -> u64;
