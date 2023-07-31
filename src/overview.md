@@ -2,9 +2,11 @@
 
 Random Rust exercises.
 
+**Warning: this is a live-edited website, errors and accidental spoilers are to be expected.**
+
 # Solutions
 
-Currently solutions are only provided in a non-human-readable form in the page source.
+Currently solutions are mostly provided in a non-human-readable form in the page source.
 Those are mostly intended for testing that the exercise is even possible to solve.
 ```rust
 # /*

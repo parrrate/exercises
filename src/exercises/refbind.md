@@ -7,7 +7,7 @@ fn refbind<T, F: Fn(&T) -> Option<&T>>(f: F, fa: Option<&T>) -> Option<&T> {
     }
 }
 # }
-# fn refbind<'a,'b,T:'a+?Sized>(f:impl'a+Fn(&'a T)->Option<&'b T>,fa:Option<&'a T>)->Option<&'b T>{fa.and_then(f)}
+# fn refbind<'a,'b,T:'a+?Sized>(f:impl 'a+Fn(&'a T)->Option<&'b T>,fa:Option<&'a T>)->Option<&'b T>{fa.and_then(f)}
 
 // don't change anything below
 

@@ -1,6 +1,29 @@
 Make `test_covariance` compile by making `BoolStream<'a>` covariant `'a`. Restrictions:
 - Can only change implementation details of `BoolStream` and its methods and add extra items outside of what's given, i.e. no signature/test change.
 - Changed version must behave the same way.
+
+Consider the following code:
+```rust,compile_fail
+pub struct BoolStream<'a>(
+    Box<dyn 'a + FnOnce() -> (bool, BoolStream<'a>)>,
+);
+
+impl<'a> BoolStream<'a> {
+    pub fn new(f: impl 'a + FnOnce() -> (bool, Self)) -> Self {
+        Self(Box::new(f))
+    }
+
+    pub fn next(self) -> (bool, Self) {
+        self.0()
+    }
+}
+
+fn test_covariance<'a: 'b, 'b>(e: BoolStream<'a>) -> BoolStream<'b> {
+    e
+}
+```
+Why does it fail to compile?
+
 ```rust
 pub struct BoolStream<'a>(
     // change this
