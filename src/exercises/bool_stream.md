@@ -1,4 +1,4 @@
-Make `test_covariance` compile by making `BoolStream<'a>` covariant `'a`.
+Make `test_covariance` compile by making `BoolStream<'a>` covariant `'a`. Restrictions:
 - Can only change implementation details of `BoolStream` and its methods and add extra items outside of what's given, i.e. no signature/test change.
 - Changed version must behave the same way.
 ```rust
