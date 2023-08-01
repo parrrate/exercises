@@ -2,12 +2,12 @@
 
 Rows are ordered based on estimated difficulty.
 
-| lifetimes\[-adjacent\] | `trait`s           | `struct`s   |
-|------------------------|--------------------|-------------|
-| [explicit lifetimes]   | [`Fn`?]            |             |
-| [extracting lifetimes] | [exclusive traits] | [`RcChars`] |
-| [composition]          | [`AnyStr`]         |             |
-|                        | [merging traits]   |             |
+| lifetimes\[-adjacent\] | `trait`s           | `struct`s    |
+|------------------------|--------------------|--------------|
+| [explicit lifetimes]   | [`Fn`?]            | [`Duration`] |
+| [extracting lifetimes] | [exclusive traits] | [`RcChars`]  |
+| [composition]          | [`AnyStr`]         |              |
+|                        | [merging traits]   |              |
 
 
 [explicit lifetimes]: ./exercises/refbind.md
@@ -18,3 +18,4 @@ Rows are ordered based on estimated difficulty.
 [merging traits]: ./exercises/modes.md
 [`AnyStr`]: ./exercises/anystr.md
 [composition]: ./exercises/composition.md
+[`Duration`]: ./exercises/duration.md
