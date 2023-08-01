@@ -1,4 +1,4 @@
-# Parsing modes
+# Deserialisation modes
 Merge implementations of `ConsumesStream` and `Deterministic` for tuple.
 
 It's recommended to first solve [this exercise](./multiple_blanket.md).
@@ -17,23 +17,24 @@ trait Stream: Sized {
     fn read_all<A>(self, ok: impl FnOnce(&[u8]) -> A) -> A;
 }
 
-trait Parsable: Sized {
+/// Can be read from a stream.
+trait FromStream: Sized {
     type Error;
 }
 
-/// Can parse any length of data.
-trait ConsumesStream: Parsable {
-    /// Try to parse the value. Can handle EOF, can ask for all data the stream has.
-    fn parse(stream: impl Stream) -> Result<Self, Self::Error>;
+/// Can be formed from any length of data. Always consumes the stream.
+trait ConsumesStream: FromStream {
+    /// Try to read the value. Can handle EOF, can ask for all data the stream has.
+    fn read_from(stream: impl Stream) -> Result<Self, Self::Error>;
 
     /// Push extra data into the value.
     fn extend(self, data: &[u8]) -> Result<Self, Self::Error>;
 }
 
-/// Whether the parsing is terminated, is only determined by the data already parsed.
-trait Deterministic: Parsable {
+/// Whether the reading is terminated, is only determined by the data already read.
+trait Deterministic: FromStream {
     /// Returns the stream, as it shouldn't succeed on unexpected EOF.
-    fn parse<S: Stream>(stream: S) -> Result<(Self, S), Self::Error>;
+    fn read_from<S: Stream>(stream: S) -> Result<(Self, S), Self::Error>;
 
     /// Always fail on extra data.
     fn fail(data: &[u8]) -> Self::Error;
@@ -44,14 +45,14 @@ enum Either<L, R> {
     Right(R),
 }
 
-impl<A: Parsable, B: Parsable> Parsable for (A, B) {
+impl<A: FromStream, B: FromStream> FromStream for (A, B) {
     type Error = Either<A::Error, B::Error>;
 }
 
 impl<A: Deterministic, B: ConsumesStream> ConsumesStream for (A, B) {
-    fn parse(stream: impl Stream) -> Result<Self, Self::Error> {
-        let (a, stream) = A::parse(stream).map_err(Either::Left)?;
-        B::parse(stream).map_err(Either::Right).map(|b| (a, b))
+    fn read_from(stream: impl Stream) -> Result<Self, Self::Error> {
+        let (a, stream) = A::read_from(stream).map_err(Either::Left)?;
+        B::read_from(stream).map_err(Either::Right).map(|b| (a, b))
     }
 
     fn extend(self, data: &[u8]) -> Result<Self, Self::Error> {
@@ -60,9 +61,9 @@ impl<A: Deterministic, B: ConsumesStream> ConsumesStream for (A, B) {
 }
 
 impl<A: Deterministic, B: Deterministic> Deterministic for (A, B) {
-    fn parse<S: Stream>(stream: S) -> Result<(Self, S), Self::Error> {
-        let (a, stream) = A::parse(stream).map_err(Either::Left)?;
-        B::parse(stream).map_err(Either::Right).map(|(b, stream)| ((a, b), stream))
+    fn read_from<S: Stream>(stream: S) -> Result<(Self, S), Self::Error> {
+        let (a, stream) = A::read_from(stream).map_err(Either::Left)?;
+        B::read_from(stream).map_err(Either::Right).map(|(b, stream)| ((a, b), stream))
     }
 
     fn fail(data: &[u8]) -> Self::Error {
