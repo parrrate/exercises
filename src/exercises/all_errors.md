@@ -1,7 +1,6 @@
 # Report all errors (or only the first error)
 
-- `only_positive(..., first())` should short-circuit on first non-positive number.
-- `only_positive(..., all())` must collect all non-positive numbers.
+Make this compile and pass tests:
 
 ```rust
 # trait Collects {
@@ -37,3 +36,6 @@ assert_eq!(only_positive(vec![1, 2, 3], first()), Ok(vec![1, 2, 3]));
 assert_eq!(only_positive(vec![1, -1, 2, -4], all()), Err(vec![-1, -4]));
 assert_eq!(only_positive(vec![1, 2, 3], all()), Ok(vec![1, 2, 3]));
 ```
+
+- `only_positive(..., first())` should short-circuit on first non-positive number.
+- `only_positive(..., all())` must collect all non-positive numbers.
