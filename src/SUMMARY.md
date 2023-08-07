@@ -12,6 +12,7 @@
 - [Chapter 2](./chapter_2.md)
   - [AnyStr](./exercises/anystr.md)
   - [Mode](./exercises/mode.md)
+  - [All Errors](./exercises/all_errors.md)
 - [Chapter 3](./chapter_3.md)
   - [Composition](./exercises/composition.md)
 
