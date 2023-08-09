@@ -45,7 +45,8 @@
 ## Solutions
 - [Implementation] used in rattlescript.
 - [Same solution] but with some extra comments.
-- [Another solution].
+- [Another solution]. I prefer this one.
+- There's an even simpler version that even an AI can generate (don't do that for `unsafe` code in production), but I dislike it for several reasons, even though it's mostly sound.
 
 [Implementation]: https://github.com/HavenSelph/rattlescript/blob/f8bafb8b063b9bf056efb1ea14188db0624d981c/src/interpreter/value.rs#L21-L50
 [Same solution]: https://gist.github.com/timotheyca/7e46c9734653b2fcbe826ea4d13b9aa0
