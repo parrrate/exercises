@@ -29,7 +29,7 @@ Example of what it may allow (solution isn't required to pass these tests, but s
 # fn ts_ref(t: &Self::T) -> &Self { t }
 # fn ts_mut(t: &mut Self::T) -> &mut Self { t }
 # fn ts_move(t: Self::T) -> Self { t }
-#  }
+# }
 # impl AnyStr for String {
 # fn provide<A:Accepts<String,E=Self,Output=Output>+Accepts<Vec<u8>,E=Self,Output=Output>,Output>(accepts:A)->Output{<A as Accepts<String>>::accept(accepts)}
 # }
