@@ -11,7 +11,6 @@ Rows are ordered based on estimated difficulty.
 
 p.s. most of the exercises are actually about `trait`s, this categorisation isn't strict.
 
-
 [explicit lifetimes]: ./exercises/refbind.md
 [`Fn`?]: ./exercises/bind.md
 [`RcChars`]: ./exercises/rcchars.md

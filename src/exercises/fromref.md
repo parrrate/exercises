@@ -1,4 +1,5 @@
 Make this compile and pass tests:
+
 ```rust
 fn with_slice<T>(f: impl FnOnce(&str) -> T) -> T {
     let s = "te".to_string() + "st";
@@ -16,6 +17,7 @@ assert_eq!(string, "test".to_string());
 ```
 
 Try solving it in the playground:
+
 ```rust,editable,compile_fail
 fn with_slice<T>(f: impl FnOnce(&str) -> T) -> T {
     f("test")

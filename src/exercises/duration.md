@@ -1,6 +1,7 @@
 # `const` `Add`?
 
 Define `FIVE_SECONDS` as `const`:
+
 ```rust
 # use std::time::Duration;
 # const fn unwrap_time(d: Option<Duration>) -> Duration { match d { Some(d) => d, None => panic!() } }
@@ -13,6 +14,7 @@ assert_eq!(FIVE_SECONDS, Duration::from_secs(5));
 ```
 
 Try solving it in the playground:
+
 ```rust,editable,compile_fail
 use std::time::Duration;
 

@@ -1,10 +1,12 @@
 # Introducing variance to objects
 
 Make `test_covariance` compile by making `BoolStream<'a>` covariant over `'a`. Restrictions:
+
 - Can only change implementation details of `BoolStream` and its methods and add extra items outside of what's given, i.e. no signature/test change.
 - Changed version must behave the same way as the original.
 
 Consider the following code:
+
 ```rust,compile_fail
 pub struct BoolStream<'a>(
     Box<dyn 'a + FnOnce() -> (bool, BoolStream<'a>)>,
@@ -24,6 +26,7 @@ fn test_covariance<'a: 'b, 'b>(e: BoolStream<'a>) -> BoolStream<'b> {
     e
 }
 ```
+
 Why does it fail to compile?
 
 ```rust

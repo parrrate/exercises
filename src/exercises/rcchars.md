@@ -15,16 +15,12 @@
 # impl RcChars {
 # pub fn from_rc(rc: std::rc::Rc<String>) -> Self {
 # let mut new = Self { _rc: rc, chars: std::mem::MaybeUninit::uninit() };
-# new.chars .write(unsafe { &*std::rc::Rc::as_ptr(&new._rc) }.chars());
+# new.chars.write(unsafe { &*std::rc::Rc::as_ptr(&new._rc) }.chars());
 # new
 # }
 # }
-# impl From<std::rc::Rc<String>> for RcChars {
-# fn from(value: std::rc::Rc<String>) -> Self { Self::from_rc(value) }
-# }
-# impl Drop for RcChars {
-# fn drop(&mut self) { unsafe { self.chars.assume_init_drop() } }
-# }
+# impl From<std::rc::Rc<String>> for RcChars { fn from(value: std::rc::Rc<String>) -> Self { Self::from_rc(value) } }
+# impl Drop for RcChars { fn drop(&mut self) { unsafe { self.chars.assume_init_drop() } } }
 # }
 # use std::rc::Rc;
 # use rcchars::RcChars;
@@ -43,6 +39,7 @@
 ```
 
 ## Solutions
+
 - [Implementation] used in rattlescript.
 - [Same solution] but with some extra comments.
 - [Another solution]. I prefer this one.
