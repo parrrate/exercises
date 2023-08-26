@@ -1,3 +1,5 @@
+# `bind`, but with references
+
 Make this compile and pass tests:
 
 ```rust
