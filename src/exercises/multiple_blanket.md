@@ -2,7 +2,7 @@
 
 Make this compile with the following restrictions:
 
-- **Can't edit definitions of `A`, `test`, `tes1`, `test2`; can only add code outside of those items.**
+- **Can't edit definitions of `A`, `test`, `test1`, `test2`; can only add code outside of those items.**
 - **Some types are `A1` but not `A2`.**
 - **Some types are `A2` but not `A1`.**
 - Some types are `A` but not `A2`.
