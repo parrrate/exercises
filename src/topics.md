@@ -5,10 +5,10 @@ Rows are ordered based on estimated difficulty.
 | lifetimes\[-adjacent\] | `trait`s           | `struct`s           |
 |------------------------|--------------------|---------------------|
 | [explicit lifetimes]   | [`Fn`?]            | [`Duration`]        |
-| [from reference]       | [`async` `Fn`]     | [All Errors?]       |
-| [extracting lifetimes] | [composition]      | [`RcChars`]         |
-| [`'static` return]     | [exclusive traits] | [`AnyStr`]          |
-|                        | [merging traits]   | [`Result` ordering] |
+| [from reference]       | [`curry`]          | [All Errors?]       |
+| [extracting lifetimes] | [`async` `Fn`]     | [`RcChars`]         |
+| [`'static` return]     | [exclusive traits] | [`Result` ordering] |
+| [composition]          | [merging traits]   | [`AnyStr`]          |
 
 p.s. most of the exercises are actually about `trait`s, this categorisation isn't strict.
 
@@ -26,3 +26,4 @@ p.s. most of the exercises are actually about `trait`s, this categorisation isn'
 [`async` `Fn`]: ./exercises/async_fn.md
 [`'static` return]: ./exercises/get_functions.md
 [`Result` ordering]: ./exercises/err_err.md
+[`curry`]: ./exercises/curry.md
