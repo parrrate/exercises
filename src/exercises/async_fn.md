@@ -5,15 +5,12 @@ Define the `AsyncToString` trait to make this compile and pass tests (don't edit
 ```rust,ignore,mdbook-runnable
 # extern crate futures;
 # use futures::{Future, executor::block_on};
-# trait AsyncToStringRef<'a> { type F: 'a + Future<Output = String>; fn to_string(&'a self, s: &'a str) -> Self::F; }
-# impl<'a, F: 'a + Future<Output = String>, T: Fn(&'a str) -> F> AsyncToStringRef<'a> for T {
-# type F = F;
-# fn to_string(&'a self, s: &'a str) -> Self::F { self(s) }
-# }
+# trait AsyncToStringRef<'a>: Fn(&'a str) -> Self::F { type F: 'a + Future<Output = String>; }
+# impl<'a, F: 'a + Future<Output = String>, T: Fn(&'a str) -> F> AsyncToStringRef<'a> for T { type F = F; }
 # trait AsyncToString: for<'a> AsyncToStringRef<'a> {}
 # impl<T: for<'a> AsyncToStringRef<'a>> AsyncToString for T {}
 async fn test_generic(s: &str, f: impl AsyncToString) -> String {
-    f.to_string(s).await
+    f(s).await
 }
 
 async fn to_string_async(s: &str) -> String {
