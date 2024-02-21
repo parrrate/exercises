@@ -104,3 +104,75 @@ mod external {
 }
 # }
 ```
+
+Template for a workspace:
+
+```toml
+# Cargo.toml
+[workspace]
+members = ["a", "a1", "a2", "common"]
+
+[workspace.package]
+version = "0.0.1"
+edition = "2021"
+publish = false
+
+[package]
+name = "solution"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+a.path = "a"
+a1.path = "a1"
+a2.path = "a2"
+common.path = "common"
+```
+
+```toml
+# a/Cargo.toml
+[package]
+name = "a"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+a1.path = "../a1"
+a2.path = "../a2"
+common.path = "../common"
+```
+
+```toml
+# a1/Cargo.toml
+[package]
+name = "a1"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+common.path = "../common"
+```
+
+```toml
+# a2/Cargo.toml
+[package]
+name = "a2"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+
+[dependencies]
+common.path = "../common"
+```
+
+```toml
+# common.Cargo.toml
+[package]
+name = "common"
+version.workspace = true
+edition.workspace = true
+publish.workspace = true
+```
