@@ -59,7 +59,8 @@ let mut linked = Linked {
 
 linked.call();
 {
-    let mut linked = linked.with("1");
+    let s = "1".to_string();
+    let mut linked = linked.with(&s);
     linked.with("2").call();
     linked.with("3").call();
 }
