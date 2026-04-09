@@ -5,6 +5,9 @@ multilingual = false
 src = "src"
 title = "Exercises"
 
+[rust]
+edition = "2021"
+
 [build]
 build-dir = "book"
 create-missing = false
