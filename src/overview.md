@@ -21,10 +21,10 @@ Some exercises may not include have the replaced parts greyed out:
 ```rust
 # mod __ {
 fn fix_me() {
-# }
+}
 # }
 # fn fixed_name() {
-}
+# }
 
 fn do_not_change_this() {
     fixed_name()

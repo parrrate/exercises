@@ -1,9 +1,13 @@
 Make this compile.
-- `A1` doesn't know about/depend on `A2`
-- `A2` doesn't know about/depend on `A1`
-- `A1` doesn't know about/depend on `A`
-- `A2` doesn't know about/depend on `A`
-- can't edit definitions of `A`, `test`, `tes1`, `test2`; can only add code outside of those items
+- `A1` doesn't know about/depend on `A2`.
+- `A2` doesn't know about/depend on `A1`.
+- `A1` doesn't know about/depend on `A`.
+- `A2` doesn't know about/depend on `A`.
+- Some types are `A1` but not `A2`.
+- Some types are `A2` but not `A1`.
+- Some types are `A` but not `A2`.
+- Some types are `A` but not `A1`.
+- Can't edit definitions of `A`, `test`, `tes1`, `test2`; can only add code outside of those items.
 ```rust
 trait A {
     fn a_ref(&self) -> u64;
