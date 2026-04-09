@@ -44,11 +44,14 @@ impl<'a, F: FnMut(String)> Linked<'a, F> {
         let mut value = node.value.to_string();
         while let Some(next) = node.next {
             value += next.value;
-# /*
+# impl<'a, F: FnMut(String)> Linked<'a, F> { fn ___(&mut self) { trait Callback { fn callback(&mut self, value: String); }
+# impl<'a, F: FnMut(String)> Callback for Linked<'a, F> { fn callback(&mut self, value: String) { (self.callback)(value); } }
+# { let mut node = 1; let next = 2;
             node = next;
         }
+# let value = unimplemented!();
         self.callback(value);
-# */
+# } }
 # node = *next; }
 # (self.callback)(value);
     }
