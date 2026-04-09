@@ -50,8 +50,10 @@ impl<'a, F: FnMut(String)> Linked<'a, F> {
 
 let mut vec = vec![];
 
+let s = "0".to_string();
+
 let mut linked = Linked {
-    node: Node { next: None, value: "0" },
+    node: Node { next: None, value: &s },
     callback: &mut |value| vec.push(value),
 };
 
