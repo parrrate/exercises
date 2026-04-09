@@ -20,5 +20,6 @@
   - [Composition](./exercises/composition.md)
   - [Covariance]()
   - [Option, Vec and BoxFuture<'a>]()
+  - [Err Err](./exercises/err_err.md)
 
 [Topics (Spoilers)](./topics.md)
