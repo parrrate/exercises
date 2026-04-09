@@ -1,5 +1,8 @@
 # Report all errors (or only the first error)
 
+- `only_positive(..., first())` should short-circuit on first non-positive number.
+- `only_positive(..., all())` must collect all non-positive numbers.
+
 ```rust
 # trait Collects {
 # type Error;
