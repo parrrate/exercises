@@ -2,8 +2,6 @@
 
 Random Rust exercises. Mostly typesystem-oriented.
 
-**Warning if you're viewing this not on github.io: this is a live-edited website, errors and accidental spoilers are to be expected.**
-
 ## Solutions
 
 Presently, solutions are often provided in a non-human-readable (compacted+misformatted) form as hidden code.
