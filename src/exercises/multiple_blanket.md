@@ -176,3 +176,21 @@ version.workspace = true
 edition.workspace = true
 publish.workspace = true
 ```
+
+Basic definitions for `A1`/`A2` (this won't work&ensp;&mdash;&ensp;you need to alter it)
+
+```rs
+trait A1 {
+    fn a1_ref(&self) -> u64;
+    fn a1_mut(&mut self) -> bool;
+    fn a1_move(self) -> Self;
+}
+```
+
+```rs
+trait A2 {
+    fn a2_ref(&self) -> u64;
+    fn a2_mut(&mut self) -> bool;
+    fn a2_move(self) -> Self;
+}
+```
