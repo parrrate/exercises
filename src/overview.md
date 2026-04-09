@@ -22,7 +22,7 @@ Some exercises may not include have the replaced parts greyed out:
 # mod __ {
 fn fix_me() {
 # }
-# mod }
+# }
 # fn fixed_name() {
 }
 
