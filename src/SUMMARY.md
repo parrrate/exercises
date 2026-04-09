@@ -10,6 +10,7 @@
   - [A/A1/A2](./exercises/multiple_blanket.md)
   - [BoolStream](./exercises/bool_stream.md)
   - [RcChars](./exercises/rcchars.md)
+  - [Async Fn](./exercises/async_fn.md)
 - [Chapter 2](./chapter_2.md)
   - [AnyStr](./exercises/anystr.md)
   - [Mode](./exercises/mode.md)
