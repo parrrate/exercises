@@ -1,7 +1,8 @@
 Make this compile and pass tests:
 ```rust
 fn with_slice<T>(f: impl FnOnce(&str) -> T) -> T {
-    f("test")
+    let s = "te".to_string() + "st";
+    f(&s)
 }
 
 # pub trait FromRef<T: ?Sized>: for<'a> From<&'a T> { fn from_ref(value: &T) -> Self { Self::from(value) } }
