@@ -5,6 +5,7 @@ Create something similar to [Python's `typing.AnyStr`].
 [Python's `typing.AnyStr`]: https://docs.python.org/3/library/typing.html#typing.AnyStr
 
 Example of what it may allow (solution isn't required to pass these tests, but should):
+
 ```rust
 # pub trait Equivalent {
 # type T;

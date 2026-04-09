@@ -1,3 +1,5 @@
+# Monad composition?
+
 ```rust
 # use std::ops::ControlFlow;
 trait Monad<'a>: 'a {

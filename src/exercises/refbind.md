@@ -1,4 +1,5 @@
 Make this compile and pass tests:
+
 ```rust
 # mod __ {
 fn refbind<T, F: Fn(&T) -> Option<&T>>(f: F, fa: Option<&T>) -> Option<&T> {
@@ -27,6 +28,7 @@ assert_eq!(
 ```
 
 Try solving it in the playground:
+
 ```rust,editable,compile_fail
 fn refbind<T, F: Fn(&T) -> Option<&T>>(f: F, fa: Option<&T>) -> Option<&T> {
     match fa {
@@ -50,4 +52,3 @@ fn main() {
     );
 }
 ```
-

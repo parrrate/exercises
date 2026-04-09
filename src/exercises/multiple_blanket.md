@@ -1,5 +1,7 @@
 # Blanket, blanket, blanket
+
 Make this compile with the following restrictions:
+
 - **Can't edit definitions of `A`, `test`, `tes1`, `test2`; can only add code outside of those items.**
 - **Some types are `A1` but not `A2`.**
 - **Some types are `A2` but not `A1`.**
@@ -75,6 +77,7 @@ fn test2(x: impl A2) {
 ```
 
 You may assume that `A`, `A1`, `A2` can be in separate crates with a dependency graph equivalent to this:
+
 ```rust
 # mod __ {
 mod a1 {
