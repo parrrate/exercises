@@ -22,7 +22,7 @@ trait FromStream: Sized {
     type Error;
 }
 
-/// Can be formed from any length of data. Always consumes the stream.
+/// Can be constructed from data of any length. Always consumes the stream.
 trait ConsumesStream: FromStream {
     /// Try to read the value. Can handle EOF, can ask for all data the stream has.
     fn read_from(stream: impl Stream) -> Result<Self, Self::Error>;
@@ -51,19 +51,26 @@ impl<A: FromStream, B: FromStream> FromStream for (A, B) {
 
 impl<A: Deterministic, B: ConsumesStream> ConsumesStream for (A, B) {
     fn read_from(stream: impl Stream) -> Result<Self, Self::Error> {
-        let (a, stream) = A::read_from(stream).map_err(Either::Left)?;
-        B::read_from(stream).map_err(Either::Right).map(|b| (a, b))
+        let (a, stream) = A::read_from(stream)
+            .map_err(Either::Left)?;
+        B::read_from(stream)
+            .map_err(Either::Right)
+            .map(|b| (a, b))
     }
 
     fn extend(self, data: &[u8]) -> Result<Self, Self::Error> {
-        self.1.extend(data).map_err(Either::Right).map(|b| (self.0, b))
+        self.1.extend(data)
+            .map_err(Either::Right).map(|b| (self.0, b))
     }
 }
 
 impl<A: Deterministic, B: Deterministic> Deterministic for (A, B) {
     fn read_from<S: Stream>(stream: S) -> Result<(Self, S), Self::Error> {
-        let (a, stream) = A::read_from(stream).map_err(Either::Left)?;
-        B::read_from(stream).map_err(Either::Right).map(|(b, stream)| ((a, b), stream))
+        let (a, stream) = A::read_from(stream)
+            .map_err(Either::Left)?;
+        B::read_from(stream)
+            .map_err(Either::Right)
+            .map(|(b, stream)| ((a, b), stream))
     }
 
     fn fail(data: &[u8]) -> Self::Error {
