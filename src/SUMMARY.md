@@ -11,6 +11,7 @@
   - [BoolStream](./exercises/bool_stream.md)
   - [RcChars](./exercises/rcchars.md)
   - [Async Fn](./exercises/async_fn.md)
+  - [Get Functions](./exercises/get_functions.md)
 - [Chapter 2](./chapter_2.md)
   - [AnyStr](./exercises/anystr.md)
   - [Mode](./exercises/mode.md)
