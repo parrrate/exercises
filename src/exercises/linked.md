@@ -46,8 +46,9 @@ impl<'a, F: FnMut(String)> Linked<'a, F> {
     }
 }
 
-let mut vec = vec![];
+// don't change anything below
 
+let mut vec = vec![];
 
 let mut linked = Linked {
     node: Node { next: None, value: "0" },
