@@ -1,3 +1,5 @@
+# `bind`
+
 Make this compile and pass tests:
 
 ```rust
@@ -29,6 +31,7 @@ assert_eq!(
 ```
 
 Try solving it in the playground:
+
 ```rust,editable,compile_fail
 fn bind<T, F: Fn(T) -> Option<T>>(f: F, fa: Option<T>) -> Option<T> {
     match fa {
