@@ -1,6 +1,6 @@
 # Async `to_string`
 
-Make this compile and pass tests:
+Define the `AsyncToString` trait to make this compile and pass tests (don't edit existing code):
 
 ```rust,ignore,mdbook-runnable
 # extern crate futures;
