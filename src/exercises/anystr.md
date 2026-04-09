@@ -21,7 +21,7 @@ Example of what it may allow (solution isn't required to pass these tests, but s
 # type E;
 # fn accept(self) -> Self::Output where Self::E: Equivalent<T = T>;
 # }
-# pub trait AnyStr{fn provide<A:Accepts<String,E=Self,Output=Output>+Accepts<Vec<u8>,E=Self,Output=Output>,Output>(accepts:A)->Output;}
+# pub trait AnyStr:Equivalent{fn provide<A:Accepts<String,E=Self,Output=Output>+Accepts<Vec<u8>,E=Self,Output=Output>,Output>(accepts:A)->Output;}
 # impl<T> Equivalent for T {
 # type T = T;
 # fn st_ref(&self) -> &Self::T { self }
@@ -37,23 +37,23 @@ Example of what it may allow (solution isn't required to pass these tests, but s
 # impl AnyStr for Vec<u8> {
 # fn provide<A:Accepts<String,E=Self,Output=Output>+Accepts<Vec<u8>,E=Self,Output=Output>,Output>(accepts:A)->Output{<A as Accepts<Vec<u8>>>::accept(accepts)}
 # }
-# pub struct Concat<E>(E, E);
+# pub struct Concat<E: Equivalent>(E::T, E::T);
 # impl<E: AnyStr> Accepts<String> for Concat<E> {
-# type Output = E;
+# type Output = E::T;
 # type E = E;
-# fn accept(self) -> Self::Output where E: Equivalent<T = String> { E::ts_move(self.0.st_move() + self.1.st_ref()) }
+# fn accept(self) -> Self::Output where E: Equivalent<T = String> { self.0 + &self.1 }
 # }
 # impl<E: AnyStr> Accepts<Vec<u8>> for Concat<E> {
-# type Output = E;
+# type Output = E::T;
 # type E = E;
 # fn accept(self) -> Self::Output where E: Equivalent<T = Vec<u8>> {
-# let mut a: Vec<u8> = self.0.st_move();
-# let mut b: Vec<u8> = self.1.st_move();
+# let mut a = self.0;
+# let mut b = self.1;
 # a.append(&mut b);
-# E::ts_move(a)
+# a
 # }
 # }
-# pub fn concat<T: AnyStr>(a: T, b: T) -> T { T::provide(Concat(a, b)) }
+# pub fn concat<T: AnyStr>(a: T, b: T) -> T { T::ts_move(T::provide(Concat(a.st_move(), b.st_move()))) }
 assert_eq!(concat("ab".to_string(), "cd".to_string()), "abcd".to_string());
 assert_eq!(concat(vec![2u8, 3u8], vec![5u8, 7u8]), vec![2u8, 3u8, 5u8, 7u8]);
 ```
