@@ -21,5 +21,6 @@
   - [Covariance]()
   - [Option, Vec and BoxFuture<'a>]()
   - [Err Err](./exercises/err_err.md)
+  - [Curry](./exercises/curry.md)
 
 [Topics (Spoilers)](./topics.md)
