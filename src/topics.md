@@ -16,7 +16,7 @@ p.s. most of the exercises are actually about `trait`s, this categorisation isn'
 [`RcChars`]: ./exercises/rcchars.md
 [extracting lifetimes]: ./exercises/bool_stream.md
 [exclusive traits]: ./exercises/multiple_blanket.md
-[merging traits]: ./exercises/modes.md
+[merging traits]: ./exercises/mode.md
 [`AnyStr`]: ./exercises/anystr.md
 [composition]: ./exercises/composition.md
 [`Duration`]: ./exercises/duration.md
