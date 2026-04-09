@@ -13,6 +13,7 @@
   - [Async Fn](./exercises/async_fn.md)
   - [Get Functions](./exercises/get_functions.md)
   - [Linked](./exercises/linked.md)
+  - [Calculating with Functions (based on Codewars)](./exercises/cwf.md)
 - [Chapter 2](./chapter_2.md)
   - [AnyStr](./exercises/anystr.md)
   - [Mode](./exercises/mode.md)
