@@ -1,6 +1,8 @@
-Make `test_covariance` compile by making `BoolStream<'a>` covariant `'a`. Restrictions:
+# Introducing variance to objects
+
+Make `test_covariance` compile by making `BoolStream<'a>` covariant over `'a`. Restrictions:
 - Can only change implementation details of `BoolStream` and its methods and add extra items outside of what's given, i.e. no signature/test change.
-- Changed version must behave the same way.
+- Changed version must behave the same way as the original.
 
 Consider the following code:
 ```rust,compile_fail
