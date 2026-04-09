@@ -6,24 +6,12 @@
 [`Rc`]: https://doc.rust-lang.org/std/rc/struct.Rc.html
 
 ```rust
-# mod rcchars {
-# pub struct RcChars { _rc: std::rc::Rc<String>, chars: std::mem::MaybeUninit<std::str::Chars<'static>> }
-# impl Iterator for RcChars {
-# type Item = char;
-# fn next(&mut self) -> Option<Self::Item> { unsafe { self.chars.assume_init_mut() }.next() }
-# }
-# impl RcChars {
-# pub fn from_rc(rc: std::rc::Rc<String>) -> Self {
-# let mut new = Self { _rc: rc, chars: std::mem::MaybeUninit::uninit() };
-# new.chars.write(unsafe { &*std::rc::Rc::as_ptr(&new._rc) }.chars());
-# new
-# }
-# }
+# mod rcchars { pub struct RcChars { rc: std::rc::Rc<String>, index: usize }
+# impl Iterator for RcChars { type Item = char; fn next(&mut self) -> Option<Self::Item> {
+# let s = self.rc.get(self.index..)?; let c = s.chars().next()?; self.index += c.len_utf8(); Some(c)
+# } } impl RcChars { pub fn from_rc(rc: std::rc::Rc<String>) -> Self { Self { rc, index: 0 } } }
 # impl From<std::rc::Rc<String>> for RcChars { fn from(value: std::rc::Rc<String>) -> Self { Self::from_rc(value) } }
-# impl Drop for RcChars { fn drop(&mut self) { unsafe { self.chars.assume_init_drop() } } }
-# }
-# use std::rc::Rc;
-# use rcchars::RcChars;
+# } use {std::rc::Rc, rcchars::RcChars};
 {
     let rc = Rc::new("abc".to_string());
     let rcc = RcChars::from(rc.clone());
@@ -40,6 +28,7 @@
 
 ## Solutions
 
+- The one in hidden code (slightly compacted).
 - [Implementation] used in rattlescript.
 - [Same solution] but with some extra comments.
 - [Another solution]. I prefer this one.
