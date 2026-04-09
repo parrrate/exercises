@@ -2,11 +2,11 @@
 
 Rows are ordered based on estimated difficulty.
 
-| lifetimes              | `trait`s           | `struct`s   |
+| lifetimes\[-adjacent\] | `trait`s           | `struct`s   |
 |------------------------|--------------------|-------------|
 | [explicit lifetimes]   | [`Fn`?]            |             |
 | [extracting lifetimes] | [exclusive traits] | [`RcChars`] |
-|                        | [`AnyStr`]         |             |
+| [composition]          | [`AnyStr`]         |             |
 |                        | [merging traits]   |             |
 
 
@@ -17,3 +17,4 @@ Rows are ordered based on estimated difficulty.
 [exclusive traits]: ./exercises/multiple_blanket.md
 [merging traits]: ./exercises/modes.md
 [`AnyStr`]: ./exercises/anystr.md
+[composition]: ./exercises/composition.md
