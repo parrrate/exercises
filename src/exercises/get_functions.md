@@ -8,18 +8,20 @@ struct Functions {
     increment: fn(i32) -> i32,
 }
 
-fn get_functions() -> &'static Functions {
+fn get_functions<const STEP: i32>() -> &'static Functions {
 # /*
     let five = || 5;
-    let increment = |n| n + 1;
+    let increment = |n| n + STEP;
     let functions = Functions { five, increment };
     &functions
 # */
-# &Functions { five: || 5, increment: |n| n + 1 }
+# &Functions { five: || 5, increment: |n| n + STEP }
 }
 
-assert_eq!((get_functions().five)(), 5);
-assert_eq!((get_functions().increment)(4), 5);
+assert_eq!((get_functions::<1>().five)(), 5);
+assert_eq!((get_functions::<3>().five)(), 5);
+assert_eq!((get_functions::<1>().increment)(4), 5);
+assert_eq!((get_functions::<3>().increment)(4), 7);
 ```
 
 Try solving it in the playground:
@@ -30,15 +32,17 @@ struct Functions {
     increment: fn(i32) -> i32,
 }
 
-fn get_functions() -> &'static Functions {
+fn get_functions<const STEP: i32>() -> &'static Functions {
     let five = || 5;
-    let increment = |n| n + 1;
+    let increment = |n| n + STEP;
     let functions = Functions { five, increment };
     &functions
 }
 
 fn main() {
-    assert_eq!((get_functions().five)(), 5);
-    assert_eq!((get_functions().increment)(4), 5);
+    assert_eq!((get_functions::<1>().five)(), 5);
+    assert_eq!((get_functions::<3>().five)(), 5);
+    assert_eq!((get_functions::<1>().increment)(4), 5);
+    assert_eq!((get_functions::<3>().increment)(4), 7);
 }
 ```
