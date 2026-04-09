@@ -6,8 +6,7 @@ Rows are ordered based on estimated difficulty.
 |------------------------|--------------------|--------------|
 | [explicit lifetimes]   | [`Fn`?]            | [`Duration`] |
 | [extracting lifetimes] | [exclusive traits] | [`RcChars`]  |
-| [composition]          | [`AnyStr`]         |              |
-|                        | [merging traits]   |              |
+| [composition]          | [merging traits]   | [`AnyStr`]   |
 
 
 [explicit lifetimes]: ./exercises/refbind.md
