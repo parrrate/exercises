@@ -11,3 +11,5 @@
 - [Chapter 2](./chapter_2.md)
   - [AnyStr](./exercises/anystr.md)
   - [Mode](./exercises/mode.md)
+
+[Topics (Spoilers)](./topics.md)

@@ -41,8 +41,7 @@ fn test2(x: impl A2) {
 # fn ap_move(t: Self::T) -> Self::T;
 # }
 # trait AWrapper: Wrapper<Self::AWrapped> { type AWrapped; }
-# impl<T: AWrapper> A for T where T::AWrapped: AProxy<T = T>,
-# {
+# impl<T: AWrapper> A for T where T::AWrapped: AProxy<T = T> {
 # fn a_ref(&self) -> u64 { <T::AWrapped as AProxy>::ap_ref(self) }
 # fn a_mut(&mut self) -> bool { <T::AWrapped as AProxy>::ap_mut(self) }
 # fn a_move(self) -> Self { <T::AWrapped as AProxy>::ap_move(self) }
