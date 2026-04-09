@@ -15,8 +15,7 @@ struct Linked<'a, F> {
 }
 
 impl<'a, F: FnMut(String)> Linked<'a, F> {
-# fn __() {
-# mod __ {
+# fn __() { mod __ {
 # struct Node<'a> { next: Option<Box<Self>>, value: &'a str }
 # struct Linked<'a, F> { node: Box<Node<'a>>, callback: &'a mut F }
 # impl<F> Linked<'_, F> {
@@ -25,10 +24,7 @@ impl<'a, F: FnMut(String)> Linked<'a, F> {
         Self {
             node: Node {
                 next: Some(self.node),
-# value: unimplemented!(),
-# }.into(),
-# callback: self.callback,
-# }; } } } }
+# value: unimplemented!(), }.into(), callback: self.callback, }; } } } }
 # fn with<'b>(&'b mut self, value: &'b str) -> Linked<'b, F> {
 # Linked {
 # node: Node {
