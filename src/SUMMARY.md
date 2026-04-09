@@ -15,5 +15,7 @@
   - [All Errors](./exercises/all_errors.md)
 - [Chapter 3](./chapter_3.md)
   - [Composition](./exercises/composition.md)
+  - [Covariance]()
+  - [Option, Vec and BoxFuture<'a>]()
 
 [Topics (Spoilers)](./topics.md)

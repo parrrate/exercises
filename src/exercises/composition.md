@@ -1,6 +1,5 @@
 ```rust
 # use std::ops::ControlFlow;
-
 trait Monad<'a>: 'a {
     type W<A: 'a>: 'a;
 
@@ -86,7 +85,6 @@ where
 # U::iterate(ComposedIteration(i))
     }
 }
-
 # trait Local<'a>: Monad<'a> { fn wrap<A: 'a, M: Monad<'a>>(wa: Self::W<M::W<A>>) -> M::W<Self::W<A>>; }
 # struct CfInstance<E>(ControlFlow<(), E>);
 # use ControlFlow::{Continue, Break};
