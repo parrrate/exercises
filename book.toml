@@ -15,3 +15,6 @@ create-missing = false
 [output.html]
 default-theme = "navy"
 mathjax-support = true
+
+[output.html.playground]
+editable = true
