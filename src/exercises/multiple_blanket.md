@@ -1,13 +1,14 @@
-Make this compile.
+Make this compile with the following restrictions:
 - `A1` doesn't know about/depend on `A2`.
 - `A2` doesn't know about/depend on `A1`.
 - `A1` doesn't know about/depend on `A`.
 - `A2` doesn't know about/depend on `A`.
-- Some types are `A1` but not `A2`.
-- Some types are `A2` but not `A1`.
+- **Some types are `A1` but not `A2`.**
+- **Some types are `A2` but not `A1`.**
 - Some types are `A` but not `A2`.
 - Some types are `A` but not `A1`.
-- Can't edit definitions of `A`, `test`, `tes1`, `test2`; can only add code outside of those items.
+- **Can't edit definitions of `A`, `test`, `tes1`, `test2`; can only add code outside of those items.**
+
 ```rust
 trait A {
     fn a_ref(&self) -> u64;
@@ -70,5 +71,33 @@ fn test2(x: impl A2) {
 # fn ap_ref(t: &Self::T) -> u64 { t.a2_ref() }
 # fn ap_mut(t: &mut Self::T) -> bool { t.a2_mut() }
 # fn ap_move(t: Self::T) -> Self::T { t.a2_move() }
+# }
+```
+
+You may assume that `A`, `A1`, `A2` can be in separate crates with a dependency graph equivalent to this:
+```rust
+# mod __ {
+mod a1 {
+    pub trait A1 { /* ... */ }
+    /* ... */
+}
+
+mod a2 {
+    pub trait A2 { /* ... */ }
+    /* ... */
+}
+
+mod a {
+    use super::{a1, a2};
+    pub trait A { /* ... */ }
+    /* ... */
+}
+
+mod external {
+    use super::{a::A, a1::A1, a2::A2};
+    fn test(x: impl A) { /* ... */ }
+    fn test1(x: impl A1) { /* ... */ }
+    fn test2(x: impl A2) { /* ... */ }
+}
 # }
 ```

@@ -5,7 +5,7 @@ Random Rust exercises.
 # Solutions
 
 Currently solutions are only provided in a non-human-readable form in the page source.
-Those are mostly inteded for testing that the exercise is even possible to solve.
+Those are mostly intended for testing that the exercise is even possible to solve.
 ```rust
 # /*
 fn fix_me() {  // Greyed out because the solution changes this line.
